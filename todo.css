@@ -71,6 +71,10 @@ button:active {
 }
 /* Media queries for mobile screens */
 @media (max-width: 600px) {
+    body {
+        font-size: 18px; /* Increase base font size for mobile */
+    }
+
     .container {
         padding: 10px;
     }
@@ -84,11 +88,13 @@ button:active {
     input {
         width: 100%;
         margin-bottom: 10px;
+        font-size: 18px; /* Increase font size for input on mobile */
     }
 
     button {
         width: 100%;
         padding: 12px;
+        font-size: 18px; /* Increase font size for button on mobile */
     }
 }
 
