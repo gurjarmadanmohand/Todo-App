@@ -1,117 +1,224 @@
+/* Global Styles */
 * {
-    margin : 0;
+    margin: 0;
     padding: 0;
-    font-family: "poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 }
-.container {
-width: 100%;
-min-height: 100vh;
-background: linear-gradient(135deg, #bacd0e, #08a1e3);
-padding: 10px;
-}
-.todo-app{
 
+/* Background with futuristic gradient and animated effect */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow: hidden;
+    animation: backgroundMove 10s infinite alternate;
+}
+
+@keyframes backgroundMove {
+    0% { background-position: left top; }
+    100% { background-position: right bottom; }
+}
+
+/* Todo App Container with Glassmorphism & Glow */
+.todo-app {
     width: 100%;
     max-width: 540px;
-    background: #c8e060;
-    margin: 100px auto 20px;
+    background: rgba(255, 252, 190, 0.862);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    margin: 50px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 18px;
-
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
 }
-.todo-app h2{
-    color: #002765;
+
+.todo-app::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    filter: blur(50px);
+}
+
+.todo-app h2 {
+    color: #000000;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
-.todo-app h2 img{
+
+.todo-app h2 img {
     width: 30px;
     margin-left: 10px;
-
 }
-.row{
+
+/* Input Row with Glow Effect */
+.row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #edeef0 ;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 30px;
     padding-left: 20px;
-     margin-bottom: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
+
 input {
-    flex: 1 ;
-    border : none;
+    flex: 1;
+    border: none;
     outline: none;
     background: transparent;
-    padding: 10px;
+    padding: 12px;
+    font-size: 16px;
     color: #000000;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+}
 
-    }
+input::placeholder {
+    color: #000000;
+}
+
+/* Button with Pulsating Glow */
 button {
-    border : none;
+    border: none;
     outline: none;
-    padding: 16px 50px;
-    background: #ff5945;
-    color: #fff;
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: #000000;
     font-size: 16px;
     cursor: pointer;
     border-radius: 40px;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 15px rgba(255, 75, 75, 0.7);
+    animation: pulseGlow 2s infinite alternate;
 }
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px rgba(255, 75, 75, 0.7); }
+    100% { box-shadow: 0 0 25px rgba(255, 75, 75, 1); }
+}
+
 button:hover {
-    background-color: #fb9403;
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
     transform: scale(1.05);
 }
 
 button:active {
-    background-color: #ede100;
     transform: scale(0.95);
 }
 
-ul li{
+/* Task List Styles */
+ul li {
     list-style: none;
-    font-size: 17px;
+    font-size: 18px;
     padding: 12px 8px 12px 50px;
     user-select: none;
     cursor: pointer;
     position: relative;
+    color: #000000;
+    transition: 0.3s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-ul li::before{
+
+ul li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+ul li::before {
     content: "";
     position: absolute;
-    height: 28px;
-    width: 28px;
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
-    background-image: url(images/unchecked.png) ;
+    background-image: url(images/unchecked.png);
     background-size: cover;
     background-position: center;
-    top: 12px;
-    left: 8px
-
+    top: 14px;
+    left: 8px;
 }
-ul li.checked{
-    color: #555;
+
+ul li.checked {
+    color: #5f5e5e;
     text-decoration: line-through;
 }
 
-ul li.checked::before{
-    background-image:url(images/checked.png)  ;
+ul li.checked::before {
+    background-image: url(images/checked.png);
 }
-ul li span{
+
+ul li span {
     position: absolute;
     right: 0;
     top: 5px;
     width: 40px;
     height: 40px;
     font-size: 22px;
-    color: #555;
+    color: #000000;
     line-height: 40px;
     text-align: center;
     border-radius: 50%;
+    transition: 0.3s;
 }
-ul li span:hover{
-    color: #ff5945;
-    background: #dbd2d2; ;
+
+ul li span:hover {
+    color: #ff4b2b;
+    background: rgba(255, 75, 75, 0.3);
 }
+
+/* Footer Section */
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0.7;
+    padding: 10px 20px;
+    max-width: 540px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+.footer .credit {
+    font-style: italic;
+    margin-top: 8px;
+  }
+  
